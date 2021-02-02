@@ -2,6 +2,7 @@ package me.acablade.ultimatebans.commands;
 
 import me.acablade.ultimatebans.objects.Ban;
 import me.acablade.ultimatebans.objects.BanOption;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -32,7 +33,7 @@ public class BanCommand implements CommandExecutor {
                         reasonBuilder.append(arg).append(" ");
                     }
                 });
-                String reason = reasonBuilder.toString();
+                String reason = ChatColor.translateAlternateColorCodes('&',reasonBuilder.toString());
                 String playerName = args[0];
 
                 Ban ban = new Ban(playerName);

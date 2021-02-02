@@ -23,7 +23,12 @@ public class Ban {
         if(!option.contains(BanOption.SILENT)) {
             Bukkit.broadcastMessage("§c"+playerName+" has been banned for: "+reason);
         }
-        Bukkit.getOfflinePlayer(playerName).banPlayer(reason,expireDate);
+        String bumper = org.apache.commons.lang.StringUtils.repeat("\n", 35);
+        String editedReason = bumper + "Ban !1!1!1!!\n" +"Reason: " + reason;
+        if(Bukkit.getPlayer(playerName) != null){
+            Bukkit.getPlayer(playerName).kickPlayer(reason);
+        }
+        Bukkit.getBanList(BanList.Type.NAME).addBan(playerName,reason,expireDate,null);
     }
 
     public void unban(){
