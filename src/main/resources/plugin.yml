@@ -1,0 +1,10 @@
+name: UltimateBans
+version: ${project.version}
+main: me.acablade.ultimatebans.UltimateBans
+api-version: 1.16.4
+authors: [Acablade]
+description: kool ban plugin epic
+website: https://www.github.com/Acablade
+commands:
+  ban:
+    description: epik ban
