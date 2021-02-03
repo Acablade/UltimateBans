@@ -2,6 +2,7 @@ package me.acablade.ultimatebans.objects;
 
 import org.bukkit.BanList;
 import org.bukkit.Bukkit;
+import org.bukkit.command.CommandSender;
 
 import java.util.Date;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public class Ban {
 
     String playerName;
-
+    List<BanOption> options;
 
     public Ban(String player){
         this.playerName = player;
@@ -19,16 +20,16 @@ public class Ban {
         return Bukkit.getBanList(BanList.Type.NAME).isBanned(playerName);
     }
 
-    public void ban(String reason, List<BanOption> option, Date expireDate){
+    public void ban(String reason, List<BanOption> option, Date expireDate, CommandSender sender){
+        this.options = option;
         if(!option.contains(BanOption.SILENT)) {
-            Bukkit.broadcastMessage("§c"+playerName+" has been banned for: "+reason);
+            Bukkit.broadcastMessage("§c"+playerName+" has been banned for: "+reason+"\nbanned by: "+sender.getName());
         }
-        String bumper = org.apache.commons.lang.StringUtils.repeat("\n", 35);
-        String editedReason = bumper + "Ban !1!1!1!!\n" +"Reason: " + reason;
         if(Bukkit.getPlayer(playerName) != null){
-            Bukkit.getPlayer(playerName).kickPlayer(reason);
+            Bukkit.getPlayer(playerName).kickPlayer("Ban!1!1 \n§rReason: "+reason+"\n§rExpire Date: "+expireDate);
         }
-        Bukkit.getBanList(BanList.Type.NAME).addBan(playerName,reason,expireDate,null);
+        Bukkit.getBanList(BanList.Type.NAME).addBan(playerName,reason,expireDate,sender.getName());
+        sender.sendMessage(getBanMessage());
     }
 
     public void unban(){
@@ -40,6 +41,12 @@ public class Ban {
     }
     public Date getDate(){
         return Bukkit.getBanList(BanList.Type.NAME).getBanEntry(playerName).getExpiration();
+    }
+
+    public String getBanMessage(){
+        StringBuilder options = new StringBuilder();
+        this.options.forEach((banOption -> options.append(banOption).append(", ")));
+        return "Banned "+playerName+" for reason: "+getReason()+",until: "+getDate() + " with options: "+options.toString();
     }
 
 

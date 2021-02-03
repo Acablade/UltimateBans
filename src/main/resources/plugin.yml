@@ -7,4 +7,16 @@ description: kool ban plugin epic
 website: https://www.github.com/Acablade
 commands:
   ban:
-    description: epik ban
+    description: Ban command for UltimateBans plugin
+  tempban:
+    aliases: [tban, tb]
+    description: Temporary ban command for UltimateBans plugin
+permissions:
+  ultimatebans.ban:
+    description: Permission to use command "/ban"
+  ultimatebans.tempban:
+    description: Permission to use command "/tempban"
+  ultimatebans.mute:
+    description: Permission to use command "/mute"
+  ultimatebans.tempmute:
+    description: Permission to use command "/tempmute"
