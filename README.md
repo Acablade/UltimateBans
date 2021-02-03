@@ -2,7 +2,7 @@
 Another ban plugin because i felt like coding it
 
 **TODO:**
-- [ ] Check ban
+- [ ] Ban info GUI
 - [ ] GUI
 - [ ] Mute
 - [ ] TempMute

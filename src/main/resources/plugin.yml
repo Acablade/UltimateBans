@@ -11,6 +11,9 @@ commands:
   tempban:
     aliases: [tban, tb]
     description: Temporary ban command for UltimateBans plugin
+  baninfo:
+    aliases: [bi,binfo]
+    description: Ban info with GUI for UltimateBans plugin
 permissions:
   ultimatebans.ban:
     description: Permission to use command "/ban"

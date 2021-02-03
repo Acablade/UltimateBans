@@ -23,7 +23,7 @@ public class TempBanCommand implements CommandExecutor {
         if(sender.hasPermission("ultimatebans.tempban")){
             if(args.length >= 3){
                 List<BanOption> options = new ArrayList<>();
-                List<String> modifiedArgs = Arrays.asList(args.clone()).subList(2,args.length-1);
+                List<String> modifiedArgs = Arrays.asList(args.clone()).subList(2,args.length);
                 StringBuilder reasonBuilder = new StringBuilder();
                 Arrays.asList(args).forEach((arg) -> {
                     if(arg.startsWith("-")){
@@ -43,6 +43,8 @@ public class TempBanCommand implements CommandExecutor {
                 Ban ban = new Ban(playerName);
                 ban.ban(reason,options,new Date(dateLong), sender);
 
+            }else{
+                sender.sendMessage("§cWrong syntax\nSyntax: /tempban <playerName> <date> <reason> [options]");
             }
 
         }

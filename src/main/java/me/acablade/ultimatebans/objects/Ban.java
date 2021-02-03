@@ -49,5 +49,9 @@ public class Ban {
         return "Banned "+playerName+" for reason: "+getReason()+",until: "+getDate() + " with options: "+options.toString();
     }
 
+    public String getSource(){
+        return Bukkit.getBanList(BanList.Type.NAME).getBanEntry(playerName).getSource();
+    }
+
 
 }
