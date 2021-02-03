@@ -2,7 +2,6 @@
 Another ban plugin because i felt like coding it
 
 **TODO:**
-- [ ] Ban info GUI
 - [ ] GUI
 - [ ] Mute
 - [ ] TempMute
@@ -10,3 +9,4 @@ Another ban plugin because i felt like coding it
 **Features:**
 - Ban command
 - TempBan command
+- Ban info GUI
