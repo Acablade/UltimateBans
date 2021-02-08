@@ -11,6 +11,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -39,7 +40,7 @@ public class MuteCommand implements CommandExecutor {
                 String reason = ChatColor.translateAlternateColorCodes('&',reasonBuilder.toString());
                 String playerName = args[0];
 
-                OfflinePlayer player = Bukkit.getOfflinePlayerIfCached(playerName);
+                OfflinePlayer player = Bukkit.getOfflinePlayer(playerName);
 
                 Mute mute = new Mute(player);
                 mute.mute(reason,options,null, sender);

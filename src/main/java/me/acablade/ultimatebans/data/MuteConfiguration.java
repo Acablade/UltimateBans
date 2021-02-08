@@ -30,5 +30,12 @@ public class MuteConfiguration {
             e.printStackTrace();
         }
     }
+    public static void save(){
+        try {
+            MuteConfiguration.getCustomConfig().save(new File(UltimateBans.getInstance().getDataFolder(), "mutes.yml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

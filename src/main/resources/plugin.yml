@@ -17,6 +17,9 @@ commands:
   mute:
     aliases: [m]
     description: Mute command for UltimateBans plugin
+  tempmute:
+    aliases: [tm]
+    description: Temporary mute command for UltimateBans plugin
 permissions:
   ultimatebans.ban:
     description: Permission to use command "/ban"

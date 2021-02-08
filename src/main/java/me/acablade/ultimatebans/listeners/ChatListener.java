@@ -16,15 +16,14 @@ public class ChatListener implements Listener {
         Mute mute = new Mute(p);
 
         if(mute.isMuted()){
-            if(!(System.currentTimeMillis() > mute.getDate().getTime())){
+            if(mute.getDate()!=null && !(System.currentTimeMillis() > mute.getDate().getTime())){
                 event.setCancelled(true);
                 String date;
-                if(mute.getDate() != null){
-                    date = mute.getDate().toString();
-                }else{
-                    date = "forever";
-                }
+                date = mute.getDate().toString();
                 p.sendMessage("§cYou have been muted for "+mute.getReason()+" until "+date+" by "+mute.getSource());
+            }else if(mute.getDate() == null){
+                event.setCancelled(true);
+                p.sendMessage("§cYou have been muted for "+mute.getReason()+" until forever by "+mute.getSource());
             }else{
                 mute.unmute();
             }
