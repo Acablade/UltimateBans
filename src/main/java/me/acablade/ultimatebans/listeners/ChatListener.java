@@ -13,7 +13,7 @@ public class ChatListener implements Listener {
     public void onChat(AsyncPlayerChatEvent event){
         Player p = event.getPlayer();
 
-        Mute mute = new Mute(p.getDisplayName());
+        Mute mute = new Mute(p);
 
         if(mute.isMuted()){
             if(!(System.currentTimeMillis() > mute.getDate().getTime())){

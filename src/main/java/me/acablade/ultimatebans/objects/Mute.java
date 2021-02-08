@@ -2,22 +2,27 @@ package me.acablade.ultimatebans.objects;
 
 import me.acablade.ultimatebans.data.MuteConfiguration;
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 public class Mute {
 
     String playerName;
+    UUID playerUUID;
 
 
-    public Mute(String playerName){
-        this.playerName = playerName;
+    public Mute(OfflinePlayer player){
+        this.playerName = player.getName();
+        this.playerUUID = player.getUniqueId();
     }
 
     public boolean isMuted(){
-        return MuteConfiguration.getCustomConfig().contains("muted."+playerName);
+        return MuteConfiguration.getCustomConfig().contains("muted."+playerUUID.toString());
     }
 
     /**
@@ -30,15 +35,15 @@ public class Mute {
     public void mute(String reason, List<MuteOption> muteOptions, Date expirationDate, CommandSender source){
         if(!isMuted()) {
             // Set reason
-            MuteConfiguration.getCustomConfig().set("muted." + playerName + ".reason", reason);
+            MuteConfiguration.getCustomConfig().set("muted." + playerUUID + ".reason", reason);
 
             // Set expiration date
-            MuteConfiguration.getCustomConfig().set("muted." + playerName + ".date", expirationDate.getTime());
+            MuteConfiguration.getCustomConfig().set("muted." + playerUUID + ".date", expirationDate.getTime());
 
             // Set source
-            MuteConfiguration.getCustomConfig().set("muted." + playerName + ".source", source);
+            MuteConfiguration.getCustomConfig().set("muted." + playerUUID + ".source", source);
 
-            MuteConfiguration.getCustomConfig().set("muted." + playerName + ".muted", true);
+            MuteConfiguration.getCustomConfig().set("muted." + playerUUID + ".muted", true);
             if(!muteOptions.contains(MuteOption.SILENT)){
                 Bukkit.broadcastMessage("§7[§bUB§7] §c"+playerName+" has been muted by "+ source.getName()+" until "+expirationDate.toString()+" with reason '"+ reason+"'");
             }else{
@@ -52,19 +57,19 @@ public class Mute {
      */
     public void unmute(){
         if(isMuted()){
-            MuteConfiguration.getCustomConfig().set("muted."+playerName+".muted", false);
+            MuteConfiguration.getCustomConfig().set("muted."+playerUUID+".muted", false);
         }
     }
     public String getReason(){
-        return MuteConfiguration.getCustomConfig().getString("muted."+playerName+".reason");
+        return MuteConfiguration.getCustomConfig().getString("muted."+playerUUID+".reason");
     }
 
     public Date getDate(){
-        return new Date(MuteConfiguration.getCustomConfig().getLong("muted."+playerName+".date"));
+        return new Date(MuteConfiguration.getCustomConfig().getLong("muted."+playerUUID+".date"));
     }
 
     public String getSource(){
-        return MuteConfiguration.getCustomConfig().getString("muted."+playerName+".source");
+        return MuteConfiguration.getCustomConfig().getString("muted."+playerUUID+".source");
     }
 
 

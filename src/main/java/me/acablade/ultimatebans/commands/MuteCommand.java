@@ -4,7 +4,9 @@ import me.acablade.ultimatebans.objects.Ban;
 import me.acablade.ultimatebans.objects.BanOption;
 import me.acablade.ultimatebans.objects.Mute;
 import me.acablade.ultimatebans.objects.MuteOption;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -37,7 +39,9 @@ public class MuteCommand implements CommandExecutor {
                 String reason = ChatColor.translateAlternateColorCodes('&',reasonBuilder.toString());
                 String playerName = args[0];
 
-                Mute mute = new Mute(playerName);
+                OfflinePlayer player = Bukkit.getOfflinePlayerIfCached(playerName);
+
+                Mute mute = new Mute(player);
                 mute.mute(reason,options,null, sender);
 
             }else{
