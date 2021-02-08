@@ -1,10 +1,12 @@
 ## UltimateBans
 Another ban plugin because i felt like coding it
 
+**ONLY SUPPORTS CRACKED SERVERS**
+
 **TODO:**
 - [ ] GUI
-- [ ] Mute
-- [ ] TempMute
+- [X] Mute
+- [X] TempMute
 
 **Features:**
 - Ban command

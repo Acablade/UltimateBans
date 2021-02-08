@@ -14,6 +14,9 @@ commands:
   baninfo:
     aliases: [bi,binfo]
     description: Ban info with GUI for UltimateBans plugin
+  mute:
+    aliases: [m]
+    description: Mute command for UltimateBans plugin
 permissions:
   ultimatebans.ban:
     description: Permission to use command "/ban"
