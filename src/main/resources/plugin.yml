@@ -20,6 +20,9 @@ commands:
   tempmute:
     aliases: [tm]
     description: Temporary mute command for UltimateBans plugin
+  unmute:
+    aliases: [um]
+    description: Susturulmayı açar
 permissions:
   ultimatebans.ban:
     description: Permission to use command "/ban"

@@ -24,6 +24,7 @@ public final class UltimateBans extends JavaPlugin {
         getCommand("tempban").setExecutor(new TempBanCommand());
         getCommand("baninfo").setExecutor(new BanInfoCommand());
         getCommand("mute").setExecutor(new MuteCommand());
+        getCommand("unmute").setExecutor(new UnmuteCommand());
         getCommand("tempmute").setExecutor(new TempMuteCommand());
         Bukkit.getPluginManager().registerEvents(new JoinListener(), this);
         Bukkit.getPluginManager().registerEvents(new InventoryListener(), this);

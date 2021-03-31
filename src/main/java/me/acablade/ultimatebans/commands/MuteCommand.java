@@ -34,7 +34,8 @@ public class MuteCommand implements CommandExecutor {
                 });
                 modifiedArgs.forEach((arg) ->{
                     if(!arg.startsWith("-")){
-                        reasonBuilder.append(arg).append(" ");
+                        if(modifiedArgs.get(modifiedArgs.size()-1).equals(arg)) reasonBuilder.append(arg);
+                        else reasonBuilder.append(arg).append(" ");
                     }
                 });
                 String reason = ChatColor.translateAlternateColorCodes('&',reasonBuilder.toString());
