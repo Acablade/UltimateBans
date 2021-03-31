@@ -55,9 +55,9 @@ public class Mute {
 
         MuteConfiguration.getCustomConfig().set("muted." + playerUUID + ".muted", true);
         if(!muteOptions.contains(MuteOption.SILENT)){
-            Bukkit.broadcastMessage("§7[§bUB§7] §c"+playerName+" has been muted by "+ source.getName()+" until "+expireDateString+" with reason '"+ reason+"'");
+            Bukkit.broadcastMessage("§7[§bUB§7] §c"+playerName +", "+ source.getName()+" tarafından "+expireDateString+" tarihine kadar '"+ reason+"' sebebiyle susturuldu.");
         }else{
-            source.sendMessage("§7[§bUB§7] §c"+playerName+" has been muted by "+ source.getName()+" until "+expireDateString+" with reason '"+ reason + "' silently");
+            source.sendMessage("§7[§bUB§7] §c"+playerName +", "+ source.getName()+" tarafından "+expireDateString+" tarihine kadar '"+ reason+"' sebebiyle sessizce susturuldu.");
         }
         MuteConfiguration.save();
     }

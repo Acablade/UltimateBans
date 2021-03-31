@@ -23,10 +23,12 @@ public class Ban {
     public void ban(String reason, List<BanOption> option, Date expireDate, CommandSender sender){
         this.options = option;
         if(!option.contains(BanOption.SILENT)) {
-            Bukkit.broadcastMessage("§c"+playerName+" has been banned for: "+reason+"\nbanned by: "+sender.getName());
+            Bukkit.broadcastMessage("§7[§bUB§7] §c"+playerName +", "+ sender.getName()+" tarafından "+expireDate+" tarihine kadar '"+ reason+"' sebebiyle uzaklaştırıldı.");
+        }else{
+            sender.sendMessage("§7[§bUB§7] §c"+playerName +", "+ sender.getName()+" tarafından "+expireDate+" tarihine kadar '"+ reason+"' sebebiyle sessizce uzaklaştırıldı.");
         }
         if(Bukkit.getPlayer(playerName) != null){
-            Bukkit.getPlayer(playerName).kickPlayer("Ban!1!1 \n§rReason: "+reason+"\n§rExpire Date: "+expireDate);
+            Bukkit.getPlayer(playerName).kickPlayer("Çekiç konuştu! \n§rSebep: "+reason+"\n§rBitiş tarihi: "+expireDate);
         }
         Bukkit.getBanList(BanList.Type.NAME).addBan(playerName,reason,expireDate,sender.getName());
         sender.sendMessage(getBanMessage());

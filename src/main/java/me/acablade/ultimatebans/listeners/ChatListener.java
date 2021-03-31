@@ -20,10 +20,10 @@ public class ChatListener implements Listener {
                 event.setCancelled(true);
                 String date;
                 date = mute.getDate().toString();
-                p.sendMessage("§cYou have been muted for "+mute.getReason()+" until "+date+" by "+mute.getSource());
+                p.sendMessage("§c"+mute.getReason()+" sebebiyle "+date+" süresine kadar "+mute.getSource() +" tarafından susturuldun!");
             }else if(mute.getDate() == null){
                 event.setCancelled(true);
-                p.sendMessage("§cYou have been muted for "+mute.getReason()+" until forever by "+mute.getSource());
+                p.sendMessage("§c"+mute.getReason()+" sebebiyle sonsuza süresine kadar "+mute.getSource() +" tarafından susturuldun!");
             }else{
                 mute.unmute();
             }
